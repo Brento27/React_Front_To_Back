@@ -1,4 +1,5 @@
 import PropTypes from "prop-types"
+import { NavLink } from "react-router-dom"
 
 function Header({ text, bgColor, textColor }) {
   const headerStyles = {
@@ -9,7 +10,9 @@ function Header({ text, bgColor, textColor }) {
   return (
     <header style={headerStyles}>
       <div className="container">
-        <h2>{text}</h2>
+        <NavLink to="/" style={{ textDecoration: "none", color: "#ff6a95" }}>
+          <h2>{text}</h2>
+        </NavLink>
       </div>
     </header>
   )
