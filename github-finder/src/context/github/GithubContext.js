@@ -14,6 +14,12 @@ export const GithubProvider = ({ children }) => {
 
   const [state, dispatch] = useReducer(githubReducer, initialState);
 
+  /**
+   * It takes a string as an argument, sets the loading state to true, creates a new URLSearchParams
+   * object with the string as the value of the q property, fetches the GitHub API with the string as
+   * the search query, and then dispatches the response to the reducer
+   * @param text - The text that the user types in the search bar.
+   */
   const searchUsers = async (text) => {
     setLoading();
 
@@ -35,6 +41,10 @@ export const GithubProvider = ({ children }) => {
     });
   };
 
+  const clearUsers = () => {
+    dispatch({ type: 'CLEAR_USERS' });
+  };
+
   // Set Loading
   const setLoading = () => {
     dispatch({ type: 'SET_LOADING' });
@@ -42,7 +52,12 @@ export const GithubProvider = ({ children }) => {
 
   return (
     <GithubContext.Provider
-      value={{ users: state.users, loading: state.loading, searchUsers }}
+      value={{
+        users: state.users,
+        loading: state.loading,
+        searchUsers,
+        clearUsers,
+      }}
     >
       {children}
     </GithubContext.Provider>
