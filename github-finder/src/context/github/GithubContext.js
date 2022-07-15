@@ -15,6 +15,10 @@ export const GithubProvider = ({ children }) => {
   const [state, dispatch] = useReducer(githubReducer, initialState);
 
   // Get initial users (testing purposes)
+  /**
+   * This function sets the loading state to true, fetches the users from the Github API, and then sets
+   * the loading state to false and sets the users to the data that was fetched.
+   */
   const fetchUsers = async () => {
     setLoading();
 
